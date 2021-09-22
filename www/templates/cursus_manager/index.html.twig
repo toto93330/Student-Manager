@@ -1,0 +1,281 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CursusManagerController!
+{% endblock %}
+
+{% block content %}
+	<section class="mt-5">
+		<div class="section__content section__content--p30">
+			<div class="container-fluid">
+				<div class="row">
+					<div
+						class="col-xl-12">
+						<!-- CATEGORY MANAGER -->
+						<div class="user-data">
+							<h3 class="title-3 m-b-30">
+								<i class="fas fa-chalkboard"></i>Category Manager</h3>
+							<div class="table-responsive table-data">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>name</td>
+											<td>slug</td>
+											<td>color</td>
+											<td>Previous</td>
+										</tr>
+									</thead>
+									<tbody id="ajaxcategory">
+
+										{% for category in categorys %}
+											<tr>
+												<td>
+													<p>{{category.name}}</p>
+												</td>
+												<td>
+													<p>{{category.slug}}</p>
+												</td>
+												<td>
+													<p>{{category.color}}</p>
+												</td>
+												<td>
+													<span class="role" style="background-color: {{category.color}};">{{category.slug}}</span>
+												</td>
+												<td>
+													<div class="table-data-feature">
+														<a href="/cursus/edit/category/{{category.id}}">
+															<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Category">
+																<i class="zmdi zmdi-edit"></i>
+															</button>
+														</a>
+														<a href="/cursus/remove/category/{{category.id}}">
+															<button class="item ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Category">
+																<i class="zmdi zmdi-delete"></i>
+															</button>
+														</a>
+													</div>
+												</td>
+											</tr>
+										</td>
+									</tbody>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="user-data__footer">
+					<a>
+						<button class="au-btn au-btn-load mr-1">load more</button>
+					</a>
+					<a href="/cursus/add/category">
+						<button class="au-btn au-btn-load ml-1">Add New Category</button>
+					</a>
+				</div>
+			</div>
+			<!-- END CATEGORY MANAGER -->
+		</div>
+	</div>
+</div></div></section><section class="mt-5"><div class="section__content section__content--p30">
+<div class="container-fluid">
+	<div class="row">
+		<div
+			class="col-xl-12">
+			<!-- CERTIFICAT LEVEL MANAGER -->
+			<div class="user-data">
+				<h3 class="title-3 m-b-30">
+					<i class="fas fa-chalkboard"></i>Certificat Manager</h3>
+				<div class="table-responsive table-data">
+					<table class="table">
+						<thead>
+							<tr>
+								<td>name</td>
+								<td>level</td>
+								<td>Previous</td>
+							</tr>
+						</thead>
+						<tbody id="ajaxcategory">
+
+							{% for certificat in certificats %}
+								<tr>
+									<td>
+										<p>{{certificat.name}}</p>
+									</td>
+									<td>
+										<p>{{certificat.level}}</p>
+									</td>
+									<td>
+										<p>{{certificat.level}}
+											({{certificat.name}})</p>
+									</td>
+									<td>
+										<div class="table-data-feature">
+											<a href="/cursus/edit/certificat/{{certificat.id}}">
+												<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Certificat">
+													<i class="zmdi zmdi-edit"></i>
+												</button>
+											</a>
+											<a href="/cursus/remove/certificat/{{certificat.id}}">
+												<button class="item ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Certificat">
+													<i class="zmdi zmdi-delete"></i>
+												</button>
+											</a>
+										</div>
+									</td>
+								</tr>
+							</td>
+						</tbody>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="user-data__footer">
+		<a>
+			<button class="au-btn au-btn-load mr-1">load more</button>
+		</a>
+		<a href="/cursus/add/certificat">
+			<button class="au-btn au-btn-load ml-1">Add New Certificat</button>
+		</a>
+	</div>
+</div>
+<!-- END CERTIFICAT LEVEL MANAGER --></div></div></div></div></section><section class="mt-5"><div class="section__content section__content--p30"><div class="container-fluid"><div class="row"><div
+class="col-xl-12">
+<!-- SCHOOL PATH DATA-->
+<div class="user-data m-b-40">
+	<h3 class="title-3 m-b-30">
+		<i class="fas fa-chalkboard"></i>School Path Manager</h3>
+	<div class="table-responsive table-data">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>name</td>
+					<td>slug</td>
+					<td>Category</td>
+					<td>Certificat Level</td>
+					<td>Time</td>
+					<td>color</td>
+				</tr>
+			</thead>
+			<tbody id="ajaxpath">
+				{% for path in paths %}
+
+					<tr>
+						<td>
+							<p>{{path.name}}</p>
+						</td>
+						<td>
+							<p>{{path.slug}}</p>
+						</td>
+						<td>
+							<span class="role" style="background-color: {{path.category.color}};">{{path.category.slug}}</span>
+						</td>
+						<td>
+							<p>{{path.certificate.level}}
+								({{path.certificate.name}})</p>
+						</td>
+						<td>
+							<p>{{path.time}}
+								Days</p>
+						</td>
+						<td>
+							<p>{{path.color}}</p>
+						</td>
+						<td>
+							<div class="table-data-feature">
+								<a href="/cursus/edit/path/{{path.id}}">
+									<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Path">
+										<i class="zmdi zmdi-edit"></i>
+									</button>
+								</a>
+								<a href="/cursus/remove/path/{{path.id}}">
+									<button class="item ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Path">
+										<i class="zmdi zmdi-delete"></i>
+									</button>
+								</a>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="user-data__footer">
+		<a>
+			<button class="au-btn au-btn-load mr-1">load more</button>
+		</a>
+		<a href="/cursus/add/path">
+			<button class="au-btn au-btn-load ml-1">Add New Path</button>
+		</a>
+	</div>
+</div>
+<!-- END SCHOOL PATH DATA--></div></div></div></div></section><section><div class="section__content section__content--p30"><div class="container-fluid"><div class="row"><div
+class="col-xl-12">
+<!-- PROJET PATH DATA-->
+<div class="user-data m-b-40">
+	<h3 class="title-3 m-b-30">
+		<i class="fas fa-chalkboard"></i>
+		Project Path Manager</h3>
+	<div class="table-responsive table-data">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>name</td>
+					<td>School Path</td>
+					<td>Time</td>
+					<td>Renumerate</td>
+					<td>Cours link</td>
+				</tr>
+			</thead>
+			<tbody id="ajaxproject">
+				{% for project in projects %}
+
+					<tr>
+						<td>
+							<p>{{project.name}}</p>
+						</td>
+						<td>
+							<span class="role" style="background-color: {{project.path.color}};">{{project.path.slug}}</span>
+						</td>
+						<td>
+							<p>{{project.time}}
+								Hours</p>
+						</td>
+						<td>
+							<p>{{project.renumerate}}
+								Euros</p>
+						</td>
+						<td>
+							<a href="#">
+								<button type="button" class="btn btn-success">
+									<i class="fas fa-link"></i>&nbsp;
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										                                                                Openclassrooms</button>
+							</a>
+						</td>
+						<td>
+							<div class="table-data-feature">
+								<a href="/cursus/edit/project/{{project.id}}">
+									<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Project">
+										<i class="zmdi zmdi-edit"></i>
+									</button>
+								</a>
+								<a href="/cursus/remove/project/{{project.id}}">
+									<button class="item ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Project">
+										<i class="zmdi zmdi-delete"></i>
+									</button>
+								</a>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="user-data__footer">
+		<a>
+			<button class="au-btn au-btn-load mr-1">load more</button>
+		</a>
+		<a href="/cursus/add/project">
+			<button class="au-btn au-btn-load ml-1">Add New Projet Path</button>
+		</a>
+	</div>
+</div>
+<!-- END PROJET PATH DATA--></div></div></div></div></section>{% endblock %}

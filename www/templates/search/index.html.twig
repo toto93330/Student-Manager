@@ -1,0 +1,11 @@
+<div class="header-button-item js-item-menu">
+	<i class="zmdi zmdi-search"></i>
+	<div class="search-dropdown js-dropdown">
+		{{ form_start(form, {'action': path('search_student'), 'method': 'POST'}) }}
+		<button type="submit" class="search-dropdown__icon">
+			<i class="zmdi zmdi-search"></i>
+		</button>
+		{{ form_widget(form.search) }}
+		{{ form_end(form) }}
+	</div>
+</div>

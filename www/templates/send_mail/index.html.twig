@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SendMailController!
+{% endblock %}
+
+{% block content %}
+	<section class="mt-5">
+		<div class="section__content section__content--p30">
+			<div class="container-fluid">
+				<div class="row">
+					<div
+						class="col-xl-12">
+						<!-- USER DATA-->
+						<div class="user-data m-b-40">
+							<h3 class="title-3 m-b-30">
+								<i class="fas fa-user-graduate"></i>Send Mail</h3>
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-header">
+										<strong>Auto Mailing system</strong>
+									</div>
+									<div class="card-body card-block">
+
+
+										{{form_start(sendmail)}}
+										<div class="row form-group">
+											<div class="col col-md-12">
+												<div class="input-group">
+													{{ form_widget(sendmail.email) }}
+													<div class="input-group-addon">
+														<i class="fas fa-user-graduate"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col-12 col-md-12">
+												{{ form_widget(sendmail.mail_template) }}
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col-12 col-md-12">
+												<h5 class="text-center">Template Render</h5>
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col-12 col-md-12">
+												{{ form_widget(sendmail.content) }}
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col-12 col-md-12">
+												<h4>Email Options</h4>
+												<div class="mt-2 d-flex flex-row justify-content-around">
+													<div>
+														<ul>
+															<li>{{ '{{ student.id }}' }}</li>
+															<li>{{ '{{ student.firstname }}' }}</li>
+															<li>{{ '{{ student.lastname }}' }}</li>
+															<li>{{ '{{ student.email }}' }}</li>
+															<li>{{ '{{ student.path.name }}' }}</li>
+															<li>{{ '{{ student.path.time }}' }}</li>
+														</ul>
+													</div>
+													<div>
+														<ul>
+															<li>{{ '{{ student.project.name }}' }}</li>
+															<li>{{ '{{ student.project.link }}' }}</li>
+															<li>{{ '{{ student.project.time }}' }}</li>
+															<li>{{ '{{ student.studentprogress }}' }}</li>
+															<li>{{ '{{ student.lastAppointment }}' }}</li>
+															<li>{{ '{{ student.nextAppointment }}' }}</li>
+														</ul>
+													</div>
+													<div>
+														<ul>
+															<li>
+																<div>{{ '{{ mentor.firstname }}' }}</div>
+															</li>
+															<li>
+																<div>{{ '{{ mentor.lastname }}' }}</div>
+															</li>
+															<li>
+																<div>{{ '{{ mentor.email }}' }}</div>
+															</li>
+															<li>
+																<div>{{ '{{ mentor.visiolink }}' }}</div>
+															</li>
+															<li>
+																<div>{{ '{{ mentor.discordlink }}' }}</div>
+															</li>
+															<li>
+																<div>{{ '{{ mentor.workplacelink }}' }}</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer">
+										<button type="submit" class="btn btn-outline-success">
+											<i class="far fa-paper-plane"></i>&nbsp; Send Mail</button>
+										<button type="reset" class="btn btn-outline-danger">
+											<i class="fas fa-ban"></i>&nbsp; Reset</button>
+									</div>
+									{{form_end(sendmail)}}
+								</div>
+							</div>
+
+
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-header">
+										<strong>Send Basic email</strong>
+									</div>
+									<div class="card-body card-block">
+										{{form_start(sendbasicmail)}}
+										<div class="row form-group">
+											<div class="col col-md-12">
+												<div class="input-group">
+													{{ form_widget(sendbasicmail.email) }}
+													<div class="input-group-addon">
+														<i class="fas fa-user-graduate"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="input-group">
+												{{ form_widget(sendbasicmail.subject) }}
+												<div class="input-group-addon">
+													<i class="fa fa-asterisk"></i>
+												</div>
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col-12 col-md-12">
+												<h5 class="text-center">Your email</h5>
+											</div>
+										</div>
+										<div class="row form-group">
+											<div class="col-12 col-md-12">
+												{{ form_widget(sendbasicmail.content) }}
+											</div>
+										</div>
+
+									</div>
+									<div class="card-footer">
+										<button type="submit" class="btn btn-outline-success">
+											<i class="far fa-paper-plane"></i>&nbsp; Send Mail</button>
+										<button type="reset" class="btn btn-outline-danger">
+											<i class="fas fa-ban"></i>&nbsp; Reset</button>
+									</div>
+								</div>
+								{{ form_end(sendbasicmail) }}
+							</div>
+
+						</div>
+						<!-- END USER DATA-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+{% endblock %}
+
+{% block javascript %}
+	<script src="{{asset('/vendor/ckeditor/ckeditor.js')}}"></script>
+	<script src="{{asset('/js/sendmail.js')}}"></script>
+	<script>
+		CKEDITOR.replace('send_mail_content', {height: 300});
+CKEDITOR.replace('send_basic_mail_content', {height: 300});
+	</script>
+{% endblock %}
