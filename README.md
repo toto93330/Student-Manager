@@ -14,5 +14,8 @@ git clone https://github.com/toto93330/Student-Manager
 ```
 Configurez vos variables d'environnement tel que le serveur SMTP ou adresse mail dans le fichier .env.local qui devra être crée à la racine du projet en réalisant une copie du fichier .env ou en utilisant le lien de configuration dans l'application.
 
+```sh
+Lancer phpdesktop-chrome.exe
+```
 
 Félications le projet est prêt à être utilisé bon mentorat à vous ! ;)
