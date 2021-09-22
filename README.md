@@ -19,3 +19,5 @@ Lancer phpdesktop-chrome.exe
 ```
 
 Félications le projet est prêt à être utilisé bon mentorat à vous ! ;)
+
+PS: en cas d'erreur 500 mettre le projet à la racine de votre disque C: Cordialement ;)
