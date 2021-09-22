@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StudentsManagerController!
+{% endblock %}
+
+{% block content %}
+	<section class="mt-5">
+		<div class="section__content section__content--p30">
+			<div class="container-fluid">
+				<div class="row">
+					<div
+						class="col-xl-12">
+						<!-- USER DATA-->
+						<div class="user-data m-b-40">
+							<h3 class="title-3 m-b-30">
+								<i class="fas fa-user-graduate"></i>Students Manager</h3>
+							<div class="table-responsive table-data">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>name</td>
+											<td>school path</td>
+											<td>Project</td>
+											<td>last Appointment</td>
+											<td>next Appointment</td>
+											<td>Student Progresse</td>
+										</tr>
+									</thead>
+									<tbody>
+
+										{% for student in students %}
+
+											<tr>
+												<td>
+													<div class="table-data__info">
+														<h6>{{student.firstname}}
+															{{student.lastname}}</h6>
+														<span>
+															<a href="/sendmail">{{student.email}}</a>
+														</span>
+													</div>
+												</td>
+												<td>
+													<span class="role" style="background-color: {{student.path.color}}">{{student.path.slug}}</span>
+												</td>
+												<td>
+													<p>{{student.project.name}}</p>
+												</td>
+												<td>
+													{% if student.lastAppointment is null %}
+														<p>null</p>
+													{% else %}
+														<p>{{student.lastAppointment|date("d/m/Y  H:i:s")}}</p>
+													{% endif %}
+
+												</td>
+												<td>
+													{% if student.nextAppointment is null %}
+														<p>null</p>
+													{% else %}
+														<p>{{student.nextAppointment|date("d/m/Y  H:i:s")}}</p>
+													{% endif %}
+
+												</td>
+												<td>
+													<p>{{student.studentProgress}}%</p>
+												</td>
+												<td>
+													<div class="table-data-feature">
+														<a href="/sendmail">
+															<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send Mail">
+																<i class="zmdi zmdi-mail-send"></i>
+															</button>
+														</a>
+														<a href="/students/edit/{{student.id}}">
+															<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Student">
+																<i class="zmdi zmdi-edit"></i>
+															</button>
+														</a>
+														<a href="/students/remove/{{student.id}}">
+															<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+																<i class="zmdi zmdi-delete"></i>
+															</button>
+														</a>
+													</div>
+												</td>
+											</tr>
+										{% endfor %}
+
+									</tbody>
+								</table>
+							</div>
+							<div class="user-data__footer">
+								<button class="au-btn au-btn-load">load more</button>
+							</div>
+						</div>
+						<!-- END USER DATA-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
