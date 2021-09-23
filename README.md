@@ -13,7 +13,7 @@ Clonez ou téléchargez le repository GitHub dans le dossier voulu :
 git clone https://github.com/toto93330/Student-Manager
 ```
 
-Téléchargez et installez les dépendances du projet avec [Composer](https://getcomposer.org/download/) via le dossier www:
+Téléchargez et installez les dépendances du projet avec [Composer](https://getcomposer.org/download/) via le dossier www :
 ```
     composer install
 ```
