@@ -6,16 +6,11 @@ Student-Manager est un programme pour aider à là gestions d'éléves pour open
 
 ![enter image description here](https://i.ibb.co/NxVZg9F/Sans-titre-2.jpg)
 
-## INSTALL / INSTALLATION
+## Download / telechargement
 
-Clonez ou téléchargez le repository GitHub dans le dossier voulu :
-```sh
-git clone https://github.com/toto93330/Student-Manager
+Télécharger l'archive :
 ```
-
-Téléchargez et installez les dépendances du projet avec [Composer](https://getcomposer.org/download/) via le dossier www :
-```
-    composer install
+https://github.com/toto93330/Student-Manager/releases/tag/v1.1
 ```
 
 Configurez vos variables d'environnement tel que le serveur SMTP ou adresse mail dans le fichier .env.local qui devra être crée à la racine du projet en réalisant une copie du fichier .env ou en utilisant le lien de configuration dans l'application.
